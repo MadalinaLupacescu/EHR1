@@ -1,38 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
 <?php
-    
-    include 'connect.php';
-
-    $username = $_POST['UserName'];
-    $password = $_POST['Password'];
-
-
-    // Check the login credentials
-    $sql = "SELECT * FROM doctors WHERE UserName='$username' AND Password='$password'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        // Login successful
-        // Start a session and redirect the user to the dashboard
-        session_start();
-        $_SESSION['logged_in'] = true;
-        header('Location: dashboard.html');
-        exit;
+    require('db.php');
+    session_start();
+    // When form submitted, check and create user session.
+    if (isset($_POST['username'])) {
+        $username = stripslashes($_REQUEST['username']);    // removes backslashes
+        $username = mysqli_real_escape_string($con, $username);
+        $password = stripslashes($_REQUEST['password']);
+        $password = mysqli_real_escape_string($con, $password);
+        // Check user is exist in the database
+        $query    = "SELECT * FROM `users` WHERE username='$username'
+                     AND password='" . md5($password) . "'";
+        $result = mysqli_query($con, $query) or die(mysql_error());
+        $rows = mysqli_num_rows($result);
+        if ($rows == 1) {
+            $_SESSION['username'] = $username;
+            // Redirect to user dashboard page
+            header("Location: dashboard.php");
+        } else {
+            echo "<div class='form'>
+                  <h3>Incorrect Username/password.</h3><br/>
+                  <p class='link'>Click here to <a href='login.php'>Login</a> again.</p>
+                  </div>";
+        }
     } else {
-        // Login failed
-        // Redirect the user back to the login page with an error message - ?error=invalid_credentials
-        header('Location: Register.html');
-        exit;
-    
-    }
-
-    // Close the connection
-    $conn->close();
 ?>
-
-
-
-
-// In this example, the PHP script connects to the database and gets the username and password from the data.
-//  It then runs a SELECT query to check if there is a matching record in the users table.
-// If a matching record is found, the login is successful and the script starts a session and redirects the user to the dashboard.
-//  If no matching record is found, the login is unsuccessful and the user is redirected back to the login page with an error message.
+    <form class="form" method="post" name="login">
+        <h1 class="login-title">Login</h1>
+        <input type="text" class="login-input" name="username" placeholder="Username" autofocus="true"/>
+        <input type="password" class="login-input" name="password" placeholder="Password"/>
+        <input type="submit" value="Login" name="submit" class="login-button"/>
+        <p class="link"><a href="registration.php">New Registration</a></p>
+  </form>
+<?php
+    }
+?>
+</body>
+</html>

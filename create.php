@@ -1,51 +1,34 @@
+
 <?php
-    
-    include 'connect.php';
-
-    
+if (isset($_POST['Add'])) {
     $name = $_POST['Name'];
-    $emailp = $_POST['Email-p'];
-    $addressp = $_POST['Address'];
+    $email = $_POST['Email-p'];
+    $address = $_POST['Address'];
     $insurance = $_POST['Insurance'];
-    $phonep = $_POST['Phone-p'];
+    $phone = $_POST['Phone-p'];
     $gender = $_POST['Gender'];
-    
-        // mysqli_query($db, "INSERT INTO patients (Name, Email-p, Address, Insurance, Phone-p,Gender)
-        // VALUES ('$name','$emailp' ,'$addressp', '$insurance', '$phonep', '$gender')"); 
-        // $_SESSION['message'] = "Patient's information saved"; 
-        //     header('location: dashboard.html');
-        //     exit;
-        // }else (isset($_POST['Cancel'])){
-        //     header('location: dashboard.html');
-        //     exit;
-        // }  
 
-    // Create the insert query
-    $sql = "INSERT INTO patients (Name, Email-p, Address, Insurance, Phone-p,Gender)
-    VALUES ('$name','$emailp' ,'$addressp', '$insurance', '$phonep', '$gender')";
+    // Create a connection to the database
+    $conn = mysqli_connect("localhost", "root", "", "ecricare_db");
 
-    // // Execute the query
-    // if ($conn->query($sql) === TRUE) {
-    //     header('Location: dashboard.html');
-    //     exit;
-    // } else {
-    //     echo "Error: Try again" . $sql . "<br>" . $conn->error;
-    // } OR ($conn->query($sql) === True) for the query 
-
-
-    // Execute the query
-    if (isset($_POST['Add'])) {
-        $_SESSION['message'] = "Patient's information saved";
-        header('Location: dashboard.html');
-        exit;
-    } if (isset($_POST['Cancel'])){
-        header('Location: dashboard.html');
-        exit;
-    } else {
-        echo "Error: Try again" . $sql . "<br>" . $conn->error;
+    // Check for a successful connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
     }
 
-    // Close the connection
-    $conn->close();
+    // Insert the patient's information into the database
+    $sql = "INSERT INTO patients (name, email, address, insurance, phone, gender)
+    VALUES ('$name', '$email', '$address', '$insurance', '$phone', '$gender')";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+}
 ?>
+
+
 

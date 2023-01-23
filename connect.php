@@ -2,7 +2,7 @@
     $server_name="localhost";
     $username="root";
     $password="";
-    $database_name="ehr";
+    $database_name="ecricare_db";
 
     $conn=mysqli_connect($server_name,$username,$password,$database_name);
     //now check the connection
