@@ -9,11 +9,16 @@
     </head>
 
     <body>
-        <div class="container" style>
+        <div class="container">
 
             <h1 class="text-center" style="color:rgb(35, 122, 243); font-family:Verdana;"> Register Here</h1>
 
             <form action="Register.php" method="POST">
+                                
+                <div class="form-group">
+                    <label class="form-label" for="LicenceNo">Licence No</label>
+                    <input class="form-control" type="text" id="text" name="LicenceNo" required>
+                </div>
                 
                 <div class="form-group">
                     <label class="form-label" for="name">First Name</label>
@@ -38,11 +43,7 @@
                     <input class="form-control" type="int" id="int" name="PhoneNo" required>
                 </div>
 
-                
-                <div class="form-group">
-                    <label class="form-label" for="LicenceNo">Licence No</label>
-                    <input class="form-control" type="text" id="text" name="LicenceNo" required>
-                </div>
+
 
                 <div class="form-group">
                     <label class="form-label" for="email">Email Address</label>

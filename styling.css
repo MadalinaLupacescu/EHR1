@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-    width: 40%;
+    width: 100%;
     background-color: #ffffff;
     height: min-content;
     border-radius: 12px;

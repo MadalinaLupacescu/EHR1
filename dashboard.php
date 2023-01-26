@@ -24,9 +24,8 @@
      <!--Top Menu & Menu button-->
         <div class="sidebar">
             <div class="profile">
-                <img src="images/Picture1.png" alt="profile picture">
-                <h3 class="fw-bold">JOHNSON</h3>
-                <P class="fw-bold">Doctor</P>
+                <h3 class="fw-bold">WELCOME</h3>
+                <P class="fw-bold">ECRI_CARE</P>
             </div>
             <ul class="navbar-nav text-center">
                 <li class="nav-item">

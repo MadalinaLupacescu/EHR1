@@ -57,13 +57,10 @@ mysqli_close($conn);
                   <a class="nav-link" href="About.php"><i class="fa-solid fa-house-user"></i>&ensp;Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fa-solid fa-people-group"></i>&ensp;About Us</a>
+                  <a class="nav-link" href="About.php"><i class="fa-solid fa-people-group"></i>&ensp;About Us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#"><i class="fa-solid fa-hospital-user"></i>&ensp;Patients</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fa-solid fa-gear"></i>&ensp;Settings</a>
                 </li>
             </ul>
         </div>

@@ -24,8 +24,8 @@
      <!--Top Menu & Menu button-->
         <div class="sidebar">
             <div class="profile">
-                <h3 class="fw-bold">LOGIN</h3>
-                <P class="fw-bold">REGISTER</P>
+                <h3 class="fw-bold" href="LOGIN.php">LOGIN</h3>
+                <P class="fw-bold" href="Register.html">REGISTER</P>
             </div>
             <ul class="navbar-nav text-center">
                 <li class="nav-item">
@@ -35,7 +35,7 @@
                   <a class="nav-link" href="#"><i class="fa-solid fa-house-user"></i>&ensp;<b>Home</b></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="#"><i class="fa-solid fa-people-group"></i>&ensp;<b>About Us</b></a>
+                  <a class="nav-link active" href="About.php"><i class="fa-solid fa-people-group"></i>&ensp;<b>About Us</b></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#"><i class="fa-solid fa-hospital-user"></i>&ensp;<b>Patients</b></a>

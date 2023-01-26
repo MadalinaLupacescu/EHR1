@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2023 at 12:35 PM
+-- Generation Time: Jan 26, 2023 at 02:20 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `doctor` (
-  `Id` int(200) NOT NULL,
   `LicenceNo` varchar(200) NOT NULL,
   `FirstName` varchar(200) NOT NULL,
   `LastName` varchar(200) NOT NULL,
@@ -62,7 +61,8 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `name`, `email`, `address`, `insurance`, `phone`, `gender`, `medical_history`, `allergy`) VALUES
-(6, 'Johnson Clever Ggalabuzi', '40ndgc@gmail.com', 'Woching 3', '', 2147483647, '', '', '');
+(6, 'Johnson Clever Ggalabuzi', '40ndgc@gmail.com', 'Woching 3', '', 2147483647, '', '', ''),
+(7, 'Olivia Okoro', 'olivia_adaugo@yahoo.com', '2 Yah Street', '', 491234567, '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -88,7 +88,7 @@ ALTER TABLE `patients`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

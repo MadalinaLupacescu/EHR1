@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>Registration</title>
-    <link rel="stylesheet" href="style.css"/>
+    <!-- <link rel="stylesheet" href="style.css"/> -->
+    <link rel="stylesheet" href="styling.css"/>
 </head>
 <body>
 <?php
@@ -40,6 +41,73 @@
         <input type="text" class="login-input" name="username" placeholder="Username" required />
         <input type="text" class="login-input" name="email" placeholder="Email Adress">
         <input type="password" class="login-input" name="password" placeholder="Password">
+
+        <!-- trying to edit the form layout -->
+        <div class="container" style>
+
+<h1 class="text-center" style="color:rgb(35, 122, 243); font-family:Verdana;"> Register Here</h1>
+
+<form action="Register.php" method="POST">
+    
+    <div class="form-group">
+        <label class="form-label" for="name">First Name</label>
+        <input class="form-control" type="text" id="text" name="FirstName" required>
+    </div>
+    
+    <div class="form-group">
+        <label class="form-label" for="name">Last Name</label>
+        <input class="form-control" type="text" id="text" name="LastName" required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="email">Create username</label>
+        <input class="form-control" type="text" id="text" name="UserName" required>
+        <div class="invalid-feedback">
+            Please enter a valid username.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="email">Phone number</label>
+        <input class="form-control" type="int" id="int" name="PhoneNo" required>
+    </div>
+
+    
+    <div class="form-group">
+        <label class="form-label" for="LicenceNo">Licence No</label>
+        <input class="form-control" type="text" id="text" name="LicenceNo" required>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <input class="form-control" type="email" id="email" name="Email" required>
+        <div class="invalid-feedback">
+            Please enter a valid email address.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input class="form-control" type="password" id="password" name="Password" required>
+        <div class="invalid-feedback">
+            Enter your password
+        </div>
+        <!-- <?php
+if ($err!="ok") 
+echo $err;
+?> -->
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="password">Confirm Password</label>
+        <input class="form-control" type="password" id="password" name="CPassword" required>
+        <div class="invalid-feedback">
+            Enter your password
+        </div>
+        <br>
+        
+<!-- The part I added ended here -->
+
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link"><a href="login.php">Click to Login</a></p>
     </form>
