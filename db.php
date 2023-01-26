@@ -1,6 +1,6 @@
 <?php
 
-    $con = mysqli_connect("localhost","root","root","LoginSystem");
+    $con = mysqli_connect("localhost","root","root","ecricare_db");
    
     if (mysqli_connect_errno()){
         echo "Failed to connect to MySQL: " . mysqli_connect_error();

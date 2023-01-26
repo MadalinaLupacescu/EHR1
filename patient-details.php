@@ -74,9 +74,9 @@ mysqli_close($conn);
      <!--Top Menu & Menu button-->
         <div class="sidebar">
             <div class="profile">
-                <img src="images/Picture1.png" alt="profile picture">
-                <h3 class="fw-bold">JOHNSON</h3>
-                <P class="fw-bold">Doctor</P>
+
+                <h3 class="fw-bold">LOGIN</h3>
+                <P class="fw-bold">REGISTER</P>
             </div>
             <ul class="navbar-nav text-center">
                 <li class="nav-item">
@@ -90,9 +90,6 @@ mysqli_close($conn);
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#"><i class="fa-solid fa-hospital-user"></i>&ensp;Patients</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fa-solid fa-gear"></i>&ensp;Settings</a>
                 </li>
             </ul>
         </div>
@@ -120,6 +117,14 @@ mysqli_close($conn);
                 <div class="form-group">
                     <label for="phone">Phone</label>
                     <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $patient['phone']; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="medical_history">medical History</label>
+                    <input type="text" class="form-control" id="medical_history" name="medical_history" value="<?php echo $patient['medical_history']; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="allergy">Allergy</label>
+                    <input type="text" class="form-control" id="allergy" name="allergy" value="<?php echo $patient['allergy']; ?>" required>
                 </div>
                 <input type="hidden" name="id" value="<?php echo $patient['id']; ?>">
                 <button type="submit" class="btn btn-primary">Update</button>
