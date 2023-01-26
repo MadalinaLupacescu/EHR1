@@ -92,6 +92,15 @@ mysqli_close($conn);
                     <label for="phone">Phone</label>
                     <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $patient['phone']; ?>" required>
                 </div>
+                <div class="form-group">
+                    <label for="medical history">medical History</label>
+                    <input type="text" class="form-control" id="medical history" name="medical history" value="<?php echo $patient['medical history']; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="allergy">Allergy</label>
+                    <input type="text" class="form-control" id="allergy" name="allergy" value="<?php echo $patient['allergy']; ?>" required>
+                </div>
+
                 <input type="hidden" name="id" value="<?php echo $patient['id']; ?>">
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>
