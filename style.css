@@ -10,7 +10,7 @@
 
 }
 body{
-	background: #f5f6fa;
+	background:#a2ecff;
 }
 
 .wrapper .sidebar{
@@ -58,7 +58,7 @@ body{
 .wrapper .sidebar ul li a:hover,
 .wrapper .sidebar ul li a.active{
 	color: #0c7db1;
-	background:white;
+	background:rgb(235, 197, 197);
     border-right: 2px solid rgb(5, 68, 104);
 }
 .wrapper .sidebar ul li a:hover .icon,

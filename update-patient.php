@@ -46,16 +46,15 @@ mysqli_close($conn);
      <!--Top Menu & Menu button-->
         <div class="sidebar">
             <div class="profile">
-                <img src="images/Picture1.png" alt="profile picture">
-                <h3 class="fw-bold">JOHNSON</h3>
-                <P class="fw-bold">Doctor</P>
+            <h3 class="fw-bold">LOGIN</h3>
+                <P class="fw-bold">REGISTER</P>
             </div>
             <ul class="navbar-nav text-center">
                 <li class="nav-item">
                   <a class="nav-link" href="#"><i class="fa-solid fa-gauge"></i>&ensp;Dashboard</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fa-solid fa-house-user"></i>&ensp;Home</a>
+                  <a class="nav-link" href="About.php"><i class="fa-solid fa-house-user"></i>&ensp;Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#"><i class="fa-solid fa-people-group"></i>&ensp;About Us</a>
