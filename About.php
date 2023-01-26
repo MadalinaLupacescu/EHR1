@@ -15,11 +15,6 @@
 	<script>
 	// $('#addpatient').modal({backdrop: 'static', keyboard: false})  
 	</script>	
-  <style>
-  .about {
-	background-image: url(images\EHR-software.jpg);
-}
-</style>
 </head>
 <body>
 

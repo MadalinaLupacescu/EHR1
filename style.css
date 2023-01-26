@@ -46,7 +46,7 @@ body{
 	display: block;
 	padding: 13px 30px;
 	border-bottom: 1px solid #10558d;
-	color: rgb(241, 237, 237);
+	color: rgb(211, 145, 145);
 	font-size: 16px;
 	position: relative;
 }
@@ -95,6 +95,15 @@ body{
 }
 
 
+.card-title{
+	color:rgb(152, 43, 43)
+	
+	}
+	.card-text{
+	color: rgb(101, 84, 66)
+	
+	}
+	
 
 /* patient*/
 
