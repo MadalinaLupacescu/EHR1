@@ -46,8 +46,8 @@ mysqli_close($conn);
      <!--Top Menu & Menu button-->
         <div class="sidebar">
             <div class="profile">
-            <h3 class="fw-bold">LOGIN</h3>
-                <P class="fw-bold">REGISTER</P>
+            <h3 class="fw-bold">WELCOME</h3>
+            <P class="fw-bold">ECRI_CARE</P>
             </div>
             <ul class="navbar-nav text-center">
                 <li class="nav-item">
