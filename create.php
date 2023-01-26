@@ -7,6 +7,8 @@ if (isset($_POST['Add'])) {
     $insurance = $_POST['Insurance'];
     $phone = $_POST['Phone-p'];
     $gender = $_POST['Gender'];
+    $medical_history = $_POST['medical_history'];
+    $allergy = $_POST['allergy'];
 
     // Create a connection to the database
     $conn = mysqli_connect("localhost", "root", "", "ecricare_db");
@@ -17,8 +19,8 @@ if (isset($_POST['Add'])) {
     }
 
     // Insert the patient's information into the database
-    $sql = "INSERT INTO patients (name, email, address, insurance, phone, gender)
-    VALUES ('$name', '$email', '$address', '$insurance', '$phone', '$gender')";
+    $sql = "INSERT INTO patients (name, email, address, insurance, phone, gender, medical_history, allergy)
+    VALUES ('$name', '$email', '$address', '$insurance', '$phone', '$gender', '$medical_history', '$allergy')";
 
     if (mysqli_query($conn, $sql)) {
         echo "New record created successfully";

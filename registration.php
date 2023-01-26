@@ -106,7 +106,8 @@ echo $err;
         </div>
         <br>
         
-<!-- The part I added ended here -->
+<!-- The part I added ended here 
+The codes did not work so I used the  register.php file instead. It is working fine-->
 
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link"><a href="login.php">Click to Login</a></p>

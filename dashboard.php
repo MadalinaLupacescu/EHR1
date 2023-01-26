@@ -76,7 +76,7 @@ if (!$conn) {
 }
 
 // Retrieve the data from the database
-$sql = "SELECT id, name, email, address, insurance, phone, gender FROM patients";
+$sql = "SELECT id, name, email, address, insurance, phone, gender, medical_history, allergy FROM patients";
 $result = mysqli_query($conn, $sql);
 
 // Check if the query was successful
@@ -92,6 +92,8 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "<th>Email</th>";
     echo "<th>Address</th>";
     echo "<th>Phone</th>";
+    echo "<th>Medical History</th>";
+    echo "<th>Allergy</th>";
     echo "</tr>";
     echo "</thead>";
     echo "<tbody>";
@@ -104,6 +106,8 @@ if ($result && mysqli_num_rows($result) > 0) {
         echo "<td>" . $row["email"] . "</td>";
         echo "<td>" . $row["address"] . "</td>";
         echo "<td>" . $row["phone"] . "</td>";
+        echo "<td>" . $row["medical_history"] . "</td>";
+        echo "<td>" . $row["allergy"] . "</td>";
 		echo "<td><button class='btn btn-info view' data-id='" . $row["id"] . "'>View</button></td>";
 		echo "<td><button class='btn btn-danger delete' data-id='" . $row["id"] . "'>Delete</button></td>";
         echo "</tr>";
@@ -240,7 +244,7 @@ mysqli_close($conn);
                         <label class="form-check-label" for="flexCheckDefault">Yes</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                         <label class="form-check-label" for="flexCheckDefault">No</label>
                     </div>
                     <br>

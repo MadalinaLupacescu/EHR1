@@ -75,7 +75,7 @@
 
     // Execute the query
     if ($conn->query($sql) === TRUE) {
-        header('Location: LOGIN.php');
+        header('Location: dashboard.php');
         exit;
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

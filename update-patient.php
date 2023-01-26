@@ -90,7 +90,7 @@ mysqli_close($conn);
                     <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $patient['phone']; ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="medical_history">medical History</label>
+                    <label for="medical_history">Medical History</label>
                     <input type="text" class="form-control" id="medical_history" name="medical_history" value="<?php echo $patient['medical_history']; ?>" required>
                 </div>
                 <div class="form-group">
