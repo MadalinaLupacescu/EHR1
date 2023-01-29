@@ -72,7 +72,7 @@ $conn = mysqli_connect("localhost", "root", "", "ecricare_db");
 
 // Check for a successful connection
 if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    die(mysqli_error($conn));
 }
 
 // Retrieve the data from the database
@@ -89,6 +89,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     echo "</th>";
     echo "<th>Patient ID</th>";
     echo "<th>Name</th>";
+    echo "<th>Gender</th>";
     echo "<th>Email</th>";
     echo "<th>Address</th>";
     echo "<th>Phone</th>";
@@ -103,6 +104,7 @@ if ($result && mysqli_num_rows($result) > 0) {
         echo "</td>";
         echo "<td>" . $row["id"] . "</td>";
         echo "<td>" . $row["name"] . "</td>";
+        echo "<td>" . $row["gender"] . "</td>";
         echo "<td>" . $row["email"] . "</td>";
         echo "<td>" . $row["address"] . "</td>";
         echo "<td>" . $row["phone"] . "</td>";
@@ -177,12 +179,17 @@ mysqli_close($conn);
                     <br>
                     <p class="fw-bold">Do you have Insurance?</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name ="Insurance" id="flexCheckDefault" required>
+                        <input class="form-check-input" type="checkbox" value="Yes" name ="Insurance" id="flexCheckDefault" required>
                         <label class="form-check-label" for="flexCheckDefault">Yes</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="Insurance" id="flexCheckDefault" checked>
+                        <input class="form-check-input" type="checkbox" value="No" name="Insurance" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">No</label>
+                    </div>
+                    <br>
+                    <div class="form-group fw-bold">
+                    <label>Medical History</label>
+                        <input class="form-control" type="text" name ="medical_history" id="text" required>
                     </div>
                     <br>
 					<div class="form-group fw-bold">
@@ -190,19 +197,22 @@ mysqli_close($conn);
 						<input type="int" class="form-control" id="int" name="Phone-p" required>
 					</div>		
                     <br>
-
-                    <p class="fw-bold">Gender</p>
+                    <div class="form-group fw-bold">
+                    <label>Allergy</label>
+                        <input class="form-control" type="text" name ="allergy" id="text" required>
+                    </div>
+                    <br>
+                    <p class="fw-bold" required>Gender</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Gender" id="flexRadioDefault1" required>
+                        <input class="form-check-input" type="radio" value ="Male" name="Gender" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">
                     Male
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="Gender" id="flexRadioDefault2" checked>
+                        <input class="form-check-input" type="radio" value ="Female" name="Gender" id="flexRadioDefault2">
                         <label class="form-check-label" for="flexRadioDefault2">
-                    Female
-                        </label>
+                    Female</label>
                     </div>
 				</div>
 				<div class="modal-footer">
@@ -219,7 +229,7 @@ mysqli_close($conn);
 <div id="editpatient" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form>
+			<form action = "edit.php" method="POST">
 				<div class="modal-header">						
 					<h4 class="modal-title">Edit Patient</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -240,39 +250,50 @@ mysqli_close($conn);
                     <br>
                     <p class="fw-bold">Do you have Insurance?</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                        <input class="form-check-input" type="checkbox" value="Yes" id="flexCheckDefault" required>
                         <label class="form-check-label" for="flexCheckDefault">Yes</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                        <input class="form-check-input" type="checkbox" value="No" id="flexCheckDefault" checked>
                         <label class="form-check-label" for="flexCheckDefault">No</label>
+                    </div>
+                    <br>
+                    <div class="form-group fw-bold">
+                    <label>Medical History</label>
+                        <input class="form-control" type="text" name ="medical_history" id="text" required>
                     </div>
                     <br>
 					<div class="form-group fw-bold">
 						<label>Phone</label>
-						<input type="text" class="form-control" required>
+						<input type="int" class="form-control" id="int" name="phone" required>
 					</div>		
+                    <br>
+                    <div class="form-group fw-bold">
+                    <label>Allergy</label>
+                        <input class="form-control" type="text" name ="allergy" id="text" required>
+
+                    </div>		
                     <br>
                     <p>Date: <input type="text" id="datepicker"></p>
                     <br>
 
                     <p class="fw-bold">Gender</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                        <input class="form-check-input" type="radio" value ="Male" name="flexRadioDefault" id="flexRadioDefault1" required>
                         <label class="form-check-label" for="flexRadioDefault1">
                     Male
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <input class="form-check-input" type="radio" value ="Female" name="flexRadioDefault" id="flexRadioDefault2" checked>
                         <label class="form-check-label" for="flexRadioDefault2">
                     Female
                         </label>
                     </div>
 				</div>
 				<div class="modal-footer">
-					<input type="button" class="btn btn-danger data-dismiss="modal" value="Cancel">
-					<input type="submit" class="btn btn-info" value="Save">
+                <input type="hidden" name="id" value="<?php echo $patient['id']; ?>">
+                <button class="btn btn-primary" name="id"><a class="text-light" href= "edit.php">Update</a></button>
 				</div>
 			</form>
 		</div>

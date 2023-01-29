@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2023 at 02:20 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Jan 29, 2023 at 10:17 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,7 +36,16 @@ CREATE TABLE `doctor` (
   `Password` varchar(200) NOT NULL,
   `CPassword` varchar(200) NOT NULL,
   `PhoneNo` int(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`LicenceNo`, `FirstName`, `LastName`, `UserName`, `Email`, `Password`, `CPassword`, `PhoneNo`) VALUES
+('', '', '', '', '', '', '', 0),
+('456567', 'Olivia', 'Okoro', 'adaolive', 'olivia@com', '12345', '12345', 5690987),
+('w2e3w', 'Steve', 'Jones', 'Jonny', 'Jones@mail', '2222', '2222', 1234578);
 
 -- --------------------------------------------------------
 
@@ -54,15 +63,15 @@ CREATE TABLE `patients` (
   `gender` enum('male','female') NOT NULL,
   `medical_history` varchar(200) NOT NULL,
   `allergy` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `patients`
 --
 
 INSERT INTO `patients` (`id`, `name`, `email`, `address`, `insurance`, `phone`, `gender`, `medical_history`, `allergy`) VALUES
-(6, 'Johnson Clever Ggalabuzi', '40ndgc@gmail.com', 'Woching 3', '', 2147483647, '', '', ''),
-(7, 'Olivia Okoro', 'olivia_adaugo@yahoo.com', '2 Yah Street', '', 491234567, '', '', '');
+(15, 'ste', 'des@mail', 'theods', 'yes', 23456, 'male', '', ''),
+(16, 'steve jones', 'jones@gmail.org', 'wednesday', 'yes', 234678, 'male', 'No history', 'None ');
 
 --
 -- Indexes for dumped tables
@@ -88,7 +97,7 @@ ALTER TABLE `patients`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

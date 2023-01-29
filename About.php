@@ -19,20 +19,20 @@
 <body>
 
 
-   <form class="needs-validation" action="dashboard.php" method="POST">
+   <form class="needs-validation">
     <div class="wrapper">
      <!--Top Menu & Menu button-->
         <div class="sidebar">
             <div class="profile">
-                <h3 class="fw-bold" href="LOGIN.php">LOGIN</h3>
-                <P class="fw-bold" href="Register.html">REGISTER</P>
+                <h3 class="fw-bold"> <a href="LOGIN.php">LOGIN</h3></a>
+                <P class="fw-bold"><a href="Register.php">REGISTER</P></a>
             </div>
             <ul class="navbar-nav text-center">
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fa-solid fa-gauge"></i>&ensp;<b>Dashboard</b></a>
+                  <a class="nav-link" href="LOGIN.php"><i class="fa-solid fa-gauge"></i>&ensp;<b>Dashboard</b></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fa-solid fa-house-user"></i>&ensp;<b>Home</b></a>
+                  <a class="nav-link" href="About.php"><i class="fa-solid fa-house-user"></i>&ensp;<b>Home</b></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active" href="About.php"><i class="fa-solid fa-people-group"></i>&ensp;<b>About Us</b></a>
@@ -73,7 +73,7 @@
 						<br>The EHR system application has been tested with a group of doctors and has received positive feedback. They found it easy to use and efficient in managing patient records. The ability to access patient information quickly and easily has improved the quality of care provided to patients.</strong><br>
 						<br></p>
 						
-					  <a href="#" class="btn btn-primary"><b><i class="fa-solid fa-people-group"></i> Join Us </b></a>
+					  <a href="Register.php" class="btn btn-primary"><b><i class="fa-solid fa-people-group"></i> Join Us </b></a>
 					</div>
 				  </div>
 				</div>

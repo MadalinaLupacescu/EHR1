@@ -1,49 +1,62 @@
 <?php
 include 'connect.php';
-// Retrieve the patient's id from the query parameter
+
+
 $id = $_GET['id'];
 
-// Retrieve the patient's information from the database
-$sql = "SELECT * FROM patients WHERE id = $id";
-$result = mysqli_query($conn, $sql);
+$query = "SELECT * FROM `patients` WHERE id=$id";
 
-// Check if the query was successful
-if ($result && mysqli_num_rows($result) > 0) {
-    $patient = mysqli_fetch_assoc($result);
-} else {
-    die(mysqli_error($conn));
+$result = mysqli_query($conn, $query);
+
+$row = mysqli_fetch_assoc($result);
+
+
+$id = $row["id"];
+$name = $row["name"];
+$email = $row["email"];
+$address = $row["address"];
+$insurance = $row["insurance"];
+$phone = $row["phone"];
+$gender = $row["gender"];
+$medical_history = $row["medical_history"];
+$allergy = $row["allergy"];
+
+
+if (isset($_POST['id'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $address = $_POST['Address'];
+    $insurance = $_POST['insurance'];
+    $phone = $_POST['phone'];
+    $gender = $_POST['gender'];
+    $medical_history = $_POST['medical_history'];
+    $allergy = $_POST['allergy'];
+
+    // Update the patient's information into the database
+    $sql = "UPDATE `patients` SET
+        name='$name',
+        email='$email',
+        address='$address',
+        insurance='$insurance',
+        phone='$phone',
+        gender='$gender',
+        medical_history='$medical_history',
+        allergy='$allergy'
+        WHERE id=$id";
+
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        header('Location: dashboard.php');
+    } else {
+        die(mysqli_error($conn));
+    }
+
+    mysqli_close($conn);
 }
-
-// Close the connection to the database
-mysqli_close($conn);
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Registration</title>
-    <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Patient Details</h2>
-            <div class="card">
-                <div class="card-body">
-                    <p class="card-text">Name: <?php echo $patient['name']; ?></p>
-                    <p class="card-text">Email: <?php echo $patient['email']; ?></p>
-                    <p class="card-text">Address: <?php echo $patient['address']; ?></p>
-                    <p class="card-text">Phone: <?php echo $patient['phone']; ?></p>
-                    <a href="edit.php?id=<?php echo $patient['id']; ?>" class="btn btn-primary">Edit</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
-</html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,16 +80,15 @@ mysqli_close($conn);
      <!--Top Menu & Menu button-->
         <div class="sidebar">
             <div class="profile">
-
-                <h3 class="fw-bold">WELCOME</h3>
-                <P class="fw-bold">ECRI_CARE</P>
+            <h3 class="fw-bold">WELCOME</h3>
+            <P class="fw-bold">ECRI_CARE</P>
             </div>
             <ul class="navbar-nav text-center">
                 <li class="nav-item">
                   <a class="nav-link" href="#"><i class="fa-solid fa-gauge"></i>&ensp;Dashboard</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fa-solid fa-house-user"></i>&ensp;Home</a>
+                  <a class="nav-link" href="About.php"><i class="fa-solid fa-house-user"></i>&ensp;Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="About.php"><i class="fa-solid fa-people-group"></i>&ensp;About Us</a>
@@ -86,41 +98,42 @@ mysqli_close($conn);
                 </li>
             </ul>
         </div>
-
+        
         <div class="section">
             <nav class="navbar navbar-dark bg-mynav">
                 <div class="container-fluid justify-content-between">
                     <a class="navbar-brand fw-bold" href="#">ECRI<i class="fa-solid fa-heart-pulse"></i>CARE</a>
-                    <a class="btn btn-primary" href="logout.php" role="button"><i class="fa-solid fa-right-from-bracket" value="Logout" name="Logout"></i>&ensp;Logout</a>
+                    <a class="btn btn-primary" href="#" role="button"><i class="fa-solid fa-right-from-bracket" value="Logout" name="Logout"></i>&ensp;Logout</a>
                 </div>
             </nav>
             <form class="mx-auto needs-validation" style="width: 50%;" action="edit.php" method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="<?php echo $patient['name']; ?>" required>
+                    <input type="text" class="form-control" id="name" name="name" value="<?php echo $row['name']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $patient['email']; ?>" required>
+                    <input type="email" class="form-control" id="email" name="email" value="<?php echo $row['email']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" value="<?php echo $patient['address']; ?>" required>
+                    <input type="text" class="form-control" id="address" name="address" value="<?php echo $row['address']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $patient['phone']; ?>" required>
+                    <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $row['phone']; ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="medical_history">medical History</label>
-                    <input type="text" class="form-control" id="medical_history" name="medical_history" value="<?php echo $patient['medical_history']; ?>" required>
+                    <label for="medical_history">Medical History</label>
+                    <input type="text" class="form-control" id="medical_history" name="medical_history" value="<?php echo $row['medical_history']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="allergy">Allergy</label>
-                    <input type="text" class="form-control" id="allergy" name="allergy" value="<?php echo $patient['allergy']; ?>" required>
+                    <input type="text" class="form-control" id="allergy" name="allergy" value="<?php echo $row['allergy']; ?>" required>
                 </div>
-                <input type="hidden" name="id" value="<?php echo $patient['id']; ?>">
-                <button class="btn btn-primary" name="id"><a class="text-light" href= "edit.php?id=$row[id]"  >Update</a></button>
+
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <button type="submit" name= "id" class="btn btn-primary">Update</button>
             </form>
 
         </div>
@@ -141,3 +154,4 @@ mysqli_close($conn);
 
 </body>
 </html>
+

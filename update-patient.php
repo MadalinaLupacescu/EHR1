@@ -14,6 +14,8 @@ if (!$conn) {
 $sql = "SELECT * FROM patients WHERE id = $id";
 $result = mysqli_query($conn, $sql);
 
+
+
 // Check if the query was successful
 if ($result && mysqli_num_rows($result) > 0) {
     $patient = mysqli_fetch_assoc($result);
@@ -22,6 +24,9 @@ if ($result && mysqli_num_rows($result) > 0) {
 // Close the connection to the database
 mysqli_close($conn);
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +77,7 @@ mysqli_close($conn);
                     <a class="btn btn-primary" href="#" role="button"><i class="fa-solid fa-right-from-bracket" value="Logout" name="Logout"></i>&ensp;Logout</a>
                 </div>
             </nav>
-            <form class="mx-auto needs-validation" style="width: 50%;" action="update-patient.php" method="POST">
+            <form class="mx-auto needs-validation" style="width: 50%;" action="edit.php" method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" value="<?php echo $patient['name']; ?>" required>
@@ -99,7 +104,7 @@ mysqli_close($conn);
                 </div>
 
                 <input type="hidden" name="id" value="<?php echo $patient['id']; ?>">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" name= "id" class="btn btn-primary">Update</button>
             </form>
 
         </div>
