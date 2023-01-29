@@ -1,51 +1,24 @@
 <?php
-    
-    include 'connect.php';
-
-    
-    $name = $_POST['Name'];
-    $emailp = $_POST['Email-p'];
-    $addressp = $_POST['Address'];
-    $insurance = $_POST['Insurance'];
-    $phonep = $_POST['Phone-p'];
-    $gender = $_POST['Gender'];
-    
-        // mysqli_query($db, "INSERT INTO patients (Name, Email-p, Address, Insurance, Phone-p,Gender)
-        // VALUES ('$name','$emailp' ,'$addressp', '$insurance', '$phonep', '$gender')"); 
-        // $_SESSION['message'] = "Patient's information saved"; 
-        //     header('location: dashboard.html');
-        //     exit;
-        // }else (isset($_POST['Cancel'])){
-        //     header('location: dashboard.html');
-        //     exit;
-        // }  
-
-    // Create the insert query
-    $sql = "INSERT INTO patients (Name, Email-p, Address, Insurance, Phone-p,Gender)
-    VALUES ('$name','$emailp' ,'$addressp', '$insurance', '$phonep', '$gender')";
-
-    // // Execute the query
-    // if ($conn->query($sql) === TRUE) {
-    //     header('Location: dashboard.html');
-    //     exit;
-    // } else {
-    //     echo "Error: Try again" . $sql . "<br>" . $conn->error;
-    // } OR ($conn->query($sql) === True) for the query 
-
-
-    // Execute the query
+include 'connect.php';
     if (isset($_POST['Add'])) {
-        $_SESSION['message'] = "Patient's information saved";
-        header('Location: dashboard.html');
-        exit;
-    } if (isset($_POST['Cancel'])){
-        header('Location: dashboard.html');
-        exit;
+        $name = $_POST['Name'];
+        $email = $_POST['Email-p'];
+        $address = $_POST['Address'];
+        $insurance = $_POST['Insurance'];
+        $phone = $_POST['Phone-p'];
+        $gender = $_POST['Gender'];
+        $medical_history = $_POST['medical_history'];
+        $allergy = $_POST['allergy'];
+ 
+    
+        // Insert the patient's information into the database
+        $sql = "INSERT INTO patients (name, email, address, insurance, phone, gender, medical_history, allergy)
+        VALUES ('$name', '$email', '$address', '$insurance', '$phone', '$gender', '$medical_history', '$allergy')";
+if ($conn->query($sql) === TRUE) {
+    header('Location: dashboard.php');
     } else {
-        echo "Error: Try again" . $sql . "<br>" . $conn->error;
+        die(mysqli_error($conn));
     }
-
-    // Close the connection
-    $conn->close();
+    mysqli_close($conn);
+}
 ?>
-
